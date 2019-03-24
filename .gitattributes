@@ -1,1 +1,4 @@
 static/* linguist-vendored
+*.css linguist-language=Python
+*.js linguist-vendored=Python
+*.html linguist-vendored=Python
