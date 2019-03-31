@@ -6,8 +6,12 @@ from .forms import PostForm
 from django.shortcuts import redirect
 
 # Create your views here.
+def post_index(request):
+    posts = Post.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:3]
+    return render(request, 'blog/post_index.html', {'posts': posts})
+
 def post_list(request):
-    posts = Post.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')
+    posts = Post.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
